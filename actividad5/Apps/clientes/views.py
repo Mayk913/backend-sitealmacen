@@ -20,7 +20,7 @@ class ClienteList(APIView):
     def get(self, request, format=None):
         clientes = Cliente.objects.all()
         serializer = ClienteSerializer(clientes, many=True)
-        print(clientes)
+        # print(clientes)
         return Response({"clientes":serializer.data})
 
     def post(self, request, format=None):
