@@ -1,9 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
+from Apps.productos.models import Producto
 
-# Create your views here.
-
-
-def home(request):
-    return HttpResponse("Bienvenidos, Uniguajira!- Aplicación Productos")
+class ProductoView(APIView):
+    def get(self, request):
+        productos = Producto.objects.all()
+        return Response({"productos": productos})
